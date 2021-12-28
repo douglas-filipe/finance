@@ -1,0 +1,44 @@
+{
+  "name": "finance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --transpile-only index.ts",
+    "typeorm": "ts-node-dev ./node_modules/.bin/typeorm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amazonsoft-tech/1money-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amazonsoft-tech/1money-api/issues"
+  },
+  "homepage": "https://github.com/amazonsoft-tech/1money-api#readme",
+  "dependencies": {
+    "@types/uuid": "^8.3.3",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.12.0",
+    "typeorm": "^0.2.41",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.6",
+    "@types/node": "^17.0.5",
+    "sequelize-cli": "^6.3.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.4"
+  }
+}
