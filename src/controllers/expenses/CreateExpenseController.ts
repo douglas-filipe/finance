@@ -1,18 +1,18 @@
 import { getRepository } from "typeorm";
 import { Request, Response } from "express";
-import { Revenues } from "../../entities/Revenue";
+import { Expenses } from "../../entities/Expense";
 
-export const CreateRevenueController = async (req: Request, res: Response) => {
+export const CreateExpenseController = async (req: Request, res: Response) => {
   try {
     const { name, value, user_id } = req.body;
-    const repo = getRepository(Revenues);
-    const revenue = repo.create({
+    const repo = getRepository(Expenses);
+    const expence = repo.create({
       name,
       value,
       user_id,
     });
-    await repo.save(revenue);
-    return res.status(201).json(revenue);
+    await repo.save(expence);
+    return res.status(201).json(expence);
   } catch {
     return res.status(409).json({ message: "Error creating revenue!" });
   }

@@ -3,7 +3,7 @@ import { Users } from "../../entities/User";
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 
-const UpdateUserController = async (req: Request, res: Response) => {
+export const UpdateUserController = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const repo = getRepository(Users);
@@ -32,4 +32,4 @@ const UpdateUserController = async (req: Request, res: Response) => {
   }
 };
 
-export default UpdateUserController;
+

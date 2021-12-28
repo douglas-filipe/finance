@@ -2,7 +2,7 @@ import { getRepository } from "typeorm";
 import { Users } from "../../entities/User";
 import { Request, Response } from "express";
 
-const GetUserController = async (req: Request, res: Response) => {
+export const GetUserController = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const repo = getRepository(Users);
@@ -18,5 +18,3 @@ const GetUserController = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Error " });
   }
 };
-
-export default GetUserController;

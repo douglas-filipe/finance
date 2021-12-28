@@ -2,7 +2,7 @@ import { getRepository } from "typeorm";
 import { Users } from "../../entities/User";
 import { Request, Response } from "express";
 
-const DeleteUserController = async (req: Request, res: Response) => {
+export const DeleteUserController = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const repo = getRepository(Users);
@@ -18,4 +18,4 @@ const DeleteUserController = async (req: Request, res: Response) => {
   }
 };
 
-export default DeleteUserController;
+

@@ -9,7 +9,7 @@ interface IDecoded {
   email: string;
 }
 
-const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
+export const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
     return res.json({ message: "Token not found" });
@@ -26,4 +26,3 @@ const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export default verifyToken;

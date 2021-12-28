@@ -5,7 +5,7 @@ import { Users } from "../../entities/User";
 import { getRepository } from "typeorm";
 require("dotenv").config();
 
-const LoginUserController = async (req: Request, res: Response) => {
+export const LoginUserController = async (req: Request, res: Response) => {
   try {
     const repo = getRepository(Users);
     const user = await repo.findOne({ email: req.body.email });
@@ -36,4 +36,4 @@ const LoginUserController = async (req: Request, res: Response) => {
   }
 };
 
-export default LoginUserController;
+
