@@ -4,14 +4,14 @@ import { Transactions } from "../../entities/Transactions";
 
 export const CreateRevenueController = async (req: Request, res: Response) => {
   try {
-    const { name, value, user_id, description } = req.body;
+    const { name, value, description } = req.body;
     const repo = getRepository(Transactions);
     const revenue = repo.create({
       name,
       value,
-      user_id,
+      user_id: req.id,
       description,
-      type: "revenue"
+      type: "revenue",
     });
     await repo.save(revenue);
     return res.status(201).json(revenue);

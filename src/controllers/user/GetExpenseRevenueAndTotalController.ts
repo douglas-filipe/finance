@@ -8,7 +8,7 @@ export const GetExpenseRevenueAndTotalController = async (
   res: Response
 ) => {
   try {
-    const { id } = req.params;
+    const { id } = req;
     const repoTransaction = await getRepository(Transactions);
     const repoUser = await getRepository(Users);
 
@@ -41,7 +41,7 @@ export const GetExpenseRevenueAndTotalController = async (
       entradas,
       saidas,
       total,
-      user: user,
+      user: { id: user.id, name: user.name, email: user.email },
     });
   } catch {
     return res.status(500).json({ message: "Error " });

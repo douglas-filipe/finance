@@ -4,12 +4,12 @@ import { Transactions } from "../../entities/Transactions";
 
 export const CreateExpenseController = async (req: Request, res: Response) => {
   try {
-    const { name, value, user_id, description } = req.body;
+    const { name, value, description } = req.body;
     const repo = getRepository(Transactions);
     const expence = repo.create({
       name,
       value,
-      user_id,
+      user_id: req.id,
       type: "expense",
       description
     });

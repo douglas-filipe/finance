@@ -9,7 +9,11 @@ interface IDecoded {
   email: string;
 }
 
-export const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
+export const verifyToken = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
     return res.json({ message: "Token not found" });
@@ -17,12 +21,9 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
   const token = authHeader.split(" ")[1];
   try {
     const decoded = (await verify(token, secret)) as IDecoded;
-    const repo = await getRepository(Users);
-    const user = await repo.findOne({ email: decoded.email });
-    console.log(user);
-    next();
+    req.id = decoded.id;
+    return next();
   } catch {
     return res.json({ message: "Invalid Token" });
   }
 };
-

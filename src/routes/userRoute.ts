@@ -11,9 +11,9 @@ import { GetExpenseRevenueAndTotalController } from "../controllers/user/GetExpe
 
 router.post("/register", CreateUserController);
 router.post("/login", LoginUserController);
+router.get("/info", verifyToken, GetExpenseRevenueAndTotalController);
 router.put("/:id", verifyToken, UpdateUserController);
 router.get("/:id", verifyToken, GetUserController);
 router.delete("/:id", verifyToken, DeleteUserController);
-router.get("/total/:id", GetExpenseRevenueAndTotalController);
 
 export default router;
