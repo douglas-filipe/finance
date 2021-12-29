@@ -9,8 +9,8 @@ import {
 import { v4 as uuid } from "uuid";
 import { Users } from "./User";
 
-@Entity("revenues")
-export class Revenues {
+@Entity("transactions")
+export class Transactions {
   @PrimaryColumn()
   id: string;
 
@@ -19,6 +19,12 @@ export class Revenues {
 
   @Column()
   value: number;
+
+  @Column()
+  description: string;
+
+  @Column()
+  type: string;
 
   @Column()
   user_id: string;

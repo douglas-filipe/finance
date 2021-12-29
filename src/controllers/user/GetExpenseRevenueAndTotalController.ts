@@ -1,8 +1,7 @@
 import { getRepository } from "typeorm";
 import { Request, Response } from "express";
-import { Revenues } from "../../entities/Revenue";
-import { Expenses } from "../../entities/Expense";
 import { Users } from "../../entities/User";
+import { Transactions } from "../../entities/Transactions";
 
 export const GetExpenseRevenueAndTotalController = async (
   req: Request,
@@ -10,22 +9,23 @@ export const GetExpenseRevenueAndTotalController = async (
 ) => {
   try {
     const { id } = req.params;
-    const repoRevenue = await getRepository(Revenues);
+    const repoTransaction = await getRepository(Transactions);
     const repoUser = await getRepository(Users);
-    const repoExpense = await getRepository(Expenses);
 
     const user = await repoUser.findOne(id);
 
-    const revenueTotal = await repoRevenue
+    const revenueTotal = await repoTransaction
       .createQueryBuilder("revenue")
       .select("SUM(revenue.value)", "total")
       .where("user_id = :id", { id: id })
+      .andWhere("type = :type", { type: "revenue" })
       .getRawOne();
 
-    const expenseTotal = await repoExpense
+    const expenseTotal = await repoTransaction
       .createQueryBuilder("expense")
       .select("SUM(expense.value)", "total")
       .where("user_id = :id", { id: id })
+      .andWhere("type = :type", { type: "expense" })
       .getRawOne();
 
     const entradas = revenueTotal.total
